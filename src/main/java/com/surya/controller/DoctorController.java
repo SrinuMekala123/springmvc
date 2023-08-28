@@ -15,7 +15,7 @@ import com.surya.service.DoctorService;
 public class DoctorController {
 
 	@Autowired
-	DoctorService doctorservice;
+	private DoctorService doctorservice;
 
 	@RequestMapping(value = "/onetomany", method = RequestMethod.GET)
 	public void onetomany() {
