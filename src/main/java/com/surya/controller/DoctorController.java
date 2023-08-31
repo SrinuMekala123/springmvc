@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.surya.pojo.Doctor1;
@@ -15,7 +18,7 @@ import com.surya.service.DoctorService;
 public class DoctorController {
 
 	@Autowired
-	DoctorService doctorservice;
+	private DoctorService doctorservice;
 
 	@RequestMapping(value = "/onetomany", method = RequestMethod.GET)
 	public void onetomany() {
@@ -34,4 +37,20 @@ public class DoctorController {
 		return mvc;
 
 	}
+
+	@RequestMapping(value = "/savedoctor", method = RequestMethod.POST)
+	public String saveDoctor(@ModelAttribute("doctor") Doctor1 doctor1) {
+		doctorservice.save(doctor1);
+		return "redirect:/retrieveDoctorDetails";
+	}
+
+	@RequestMapping("/edit")
+	public ModelAndView editForm(@RequestParam Integer pid) {
+		ModelAndView mav = new ModelAndView("editpatient");
+		Doctor1 listofdoctors = doctorservice.get(pid);
+		mav.addObject("doctor", listofdoctors);
+
+		return mav;
+	}
+
 }

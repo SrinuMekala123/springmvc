@@ -14,8 +14,9 @@
 <td>Pid</td>
 <td>pname</td>
 <td>address</td>
-<td> Update</td>
-<td>Delete</td>>
+<td>edit</td>
+<td>delete</td>
+
 </tr>
 </thead>
 
@@ -29,8 +30,9 @@
 <td>${doc.pid}</td>
 <td>${doc.pname}</td>
 <td>${doc.address}</td>
-<td><a th:href="@{/edit/{id}(id=${doc.did})}" class="btn btn-primary">Update</a></td>
-<td><a th:href="@{/delete/{id}(id=${doc.did})}" class="btn btn-primary">Delete</a></td>
+<td><a href="editemp/${doc.id}">Edit</a></td>  
+   <td><a href="deleteemp/${doc.id}">Delete</a></td>
+
 </tr>
 </tbody>
 </c:forEach>

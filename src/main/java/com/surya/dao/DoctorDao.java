@@ -10,13 +10,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.springframework.stereotype.Repository;
+
 
 
 import com.surya.pojo.Doctor;
 import com.surya.pojo.Doctor1;
 
-@Repository
+ 
 public class DoctorDao {
 
 	public void onetomany(Doctor d) {
@@ -67,5 +67,23 @@ public class DoctorDao {
 			listdoctors.add(d1);
 		}
 		return listdoctors;
+	}
+
+	public Doctor1 get(Integer pid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void save(Doctor1 doctor) {
+		Configuration cf = new Configuration();
+		cf.configure("hibernate.cfg.xml");
+		SessionFactory sf=cf.buildSessionFactory();
+		Session ss=sf.openSession();
+		Transaction tx=ss.beginTransaction();
+		
+		ss.save(doctor);
+		tx.commit();
+		ss.close();
+		
 	}
 }
