@@ -50,7 +50,12 @@ public class DoctorController {
 		Doctor1 listofdoctors = doctorservice.get(pid);
 		mav.addObject("doctor", listofdoctors);
 
-		return mav;
+		return mav; 
 	}
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public void searchApi(@RequestParam(required = true) int did) {
+		doctorservice.searchApi(did);
+	}
+
 
 }

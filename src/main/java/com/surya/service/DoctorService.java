@@ -116,4 +116,9 @@ public class DoctorService {
 		
 
 	}
+	public void searchApi(int did) {
+		doctorDao.searchDoctorDetails(did);
+		
+	}
+
 }
