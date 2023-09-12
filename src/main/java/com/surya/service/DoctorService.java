@@ -120,5 +120,10 @@ public class DoctorService {
 		doctorDao.searchDoctorDetails(did);
 		
 	}
+	public void deleteDoctor(String did) {
+		int id= Integer.valueOf(did);
+		doctorDao.deleteDoctor(id);
+		
+	}
 
 }

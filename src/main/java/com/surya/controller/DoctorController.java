@@ -43,6 +43,11 @@ public class DoctorController {
 		doctorservice.save(doctor1);
 		return "redirect:/retrieveDoctorDetails";
 	}
+	@RequestMapping(value="/deleteDoctor",method = RequestMethod.POST)
+	void deleteDoctor(@RequestParam("empid") String empid) {
+		System.out.println("deleteDoctor");
+		doctorservice.deleteDoctor(empid);
+	}
 
 	@RequestMapping("/edit")
 	public ModelAndView editForm(@RequestParam Integer pid) {

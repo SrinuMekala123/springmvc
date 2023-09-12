@@ -120,6 +120,19 @@ public class DoctorDao {
 		}
 		return listdoctors;
 	}
-	
+	public void deleteDoctor(int did) {
+
+		Configuration cf = new Configuration();
+		cf.configure("hibernate.cfg.xml");
+		SessionFactory sf = cf.buildSessionFactory();
+		Session ss = sf.openSession();
+		
+		 Transaction tx=ss.beginTransaction();
+		 Doctor doctor = (Doctor) ss.get(Doctor.class, did); // Load the parent entity
+		 ss.delete(doctor);
+		 
+		tx.commit();
+		ss.close();
+	}
 
 }
